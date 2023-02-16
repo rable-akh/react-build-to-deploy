@@ -37,7 +37,7 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
-        source: "/home/runner/work/react-build-to-deploy/react-build-to-deploy/build"
+        source: "/home/runner/work/react-build-to-deploy/react-build-to-deploy/build/github/workspace/build"
         target: "/home/igsdev/uitest"
     
     - name: Deploy After reload server
