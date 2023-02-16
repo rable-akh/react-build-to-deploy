@@ -50,10 +50,13 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
+          cd /home/igsdev/uitest
+          cp -r /home/igsdev/uitest/github/workspace/build /home/igsdev/uitest
+          rm -rf /home/igsdev/uitest/github
           export NVM_DIR="$HOME/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           nvm install --lts
-          npm install --only=prod
+          # npm install --only=prod
           npm i -g pm2
           pm2 list
           # pm2 reload 9
