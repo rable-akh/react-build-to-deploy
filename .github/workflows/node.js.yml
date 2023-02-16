@@ -29,11 +29,19 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: scp -C -i ${{ secrets.PRIVATE_KEY }} -r /var/www/* ${{ secrets.USER }}@${{ secrets.HOST }}:/home/uitest 
-
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Deploy using ssh
+    
+    - name: Deploy with SCP using ssh
+      uses: nicklasfrahm/scp-action@main
+      with: 
+        direction: upload
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        source: |
+          /home/runner/work/react-build-to-deploy/react-build-to-deploy/build/*
+        target: /home/igsdev/uitest
+    
+    - name: Deploy After reload server
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
