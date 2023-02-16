@@ -29,5 +29,5 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
-    - run: find / -type d -name 'build'
+    - run: find / -type d -name '9874aalalalalal'
 
