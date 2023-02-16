@@ -29,6 +29,5 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
-    - run: |
-          cd /home
-          ls -a
+    - run: find / -type d -name 'build'
+
