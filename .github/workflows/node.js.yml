@@ -29,7 +29,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: ls -a
-    - run: cd /home/runner/work/react-build-to-deploy/react-build-to-deploy/build/build
+    - run: cd build
     - run: ls -a
     #- run: scp -C -i ${{ secrets.PRIVATE_KEY }} -r /var/www/* ${{ secrets.USER }}@${{ secrets.HOST }}:/home/uitest 
     
