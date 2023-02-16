@@ -31,15 +31,14 @@ jobs:
     #- run: scp -C -i ${{ secrets.PRIVATE_KEY }} -r /var/www/* ${{ secrets.USER }}@${{ secrets.HOST }}:/home/uitest 
     
     - name: Deploy with SCP using ssh
-      uses: nicklasfrahm/scp-action@main
+      uses: appleboy/scp-action@master
       with: 
-        direction: upload
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.PRIVATE_KEY }}
-        source: |
-          /home/runner/work/react-build-to-deploy/react-build-to-deploy/build/*
-        target: /home/igsdev/uitest
+        port: 22
+        source: "/home/runner/work/react-build-to-deploy/react-build-to-deploy/build"
+        target: "/home/igsdev/uitest"
     
     - name: Deploy After reload server
       uses: appleboy/ssh-action@master
